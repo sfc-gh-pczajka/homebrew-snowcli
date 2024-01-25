@@ -8,11 +8,8 @@
     depends_on "rust" => :build
     depends_on "python3"
 
-
-
     def install
       ENV["CARGO_NET_GIT_FETCH_WITH_CLI"] = "true"
-#       ENV["SNOWFLAKE_DISABLE_COMPILE_ARROW_EXTENSIONS"] = "true"
       #without_pip=false because of https://github.com/Homebrew/brew/pull/15792
       venv = virtualenv_create(libexec, "python3", system_site_packages: false, without_pip: false)
       venv.instance_variable_get(:@formula).system venv.instance_variable_get(:@venv_root)/"bin/python",
