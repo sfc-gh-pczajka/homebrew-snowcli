@@ -5,7 +5,6 @@
     url "{{ sf_url }}"
     sha256 "{{ sf_sha }}"
 
-    depends_on "rust" => :build
     depends_on "python3"
 
     def install
@@ -16,7 +15,6 @@
         "-m", "pip", "install", "pip==22.3.1"
       venv.instance_variable_get(:@formula).system venv.instance_variable_get(:@venv_root)/"bin/pip",
         "install", "snowflake-cli-labs=={{ version }}"
-      venv.pip_install_and_link buildpath
       bin.install_symlink "#{libexec}/bin/snow" => "snow"
     end
 

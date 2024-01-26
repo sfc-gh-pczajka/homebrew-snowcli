@@ -5,7 +5,6 @@
     url "https://files.pythonhosted.org/packages/45/8a/1d7eb85f6aca8d5a3e6a420ad77cf5deec0442d26b19e10c826979ccafe9/snowflake_cli_labs-1.2.4.tar.gz"
     sha256 "063cfb5174fdb173ae1d8f0066347194546268fa6d9db63edac63a61d983ec9f"
 
-    depends_on "rust" => :build
     depends_on "python3"
 
     def install
@@ -16,7 +15,6 @@
         "-m", "pip", "install", "pip==22.3.1"
       venv.instance_variable_get(:@formula).system venv.instance_variable_get(:@venv_root)/"bin/pip",
         "install", "snowflake-cli-labs==1.2.4"
-      venv.pip_install_and_link buildpath
       bin.install_symlink "#{libexec}/bin/snow" => "snow"
     end
 
